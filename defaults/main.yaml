@@ -1,0 +1,21 @@
+---
+# Disable services, e.g. UFW.
+firewalld_disable_firewalls: []
+#  - ufw
+
+# Configure ports.
+firewalld_ports: []
+#  - zone: public
+#    port_numbers:  # List of ports or port-port ranges
+#      - 80
+#      - 443
+#      - 8080-8089
+#    protocol: tcp
+#    state: enabled
+
+# Configure services.
+firewalld_services: []
+#  - zone: public
+#    service_names:  # List of services
+#      - ssh
+#    state: disabled

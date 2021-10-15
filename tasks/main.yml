@@ -1,0 +1,40 @@
+---
+- name: Disable unused firewalls.
+  service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: false
+  with_items: "{{ firewalld_disable_firewalls }}"
+
+- name: Install firewalld.
+  package:
+    name: firewalld
+    state: present
+
+- name: Make sure firewalld is running.
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
+- name: Configure firewalld ports.
+  firewalld:
+    zone: "{{ item.0.zone }}"
+    port: "{{ item.1 }}/{{ item.0.protocol }}"
+    state: "{{ item.0.state }}"
+    immediate: yes
+    permanent: yes
+  with_subelements:
+    - "{{ firewalld_ports }}"
+    - port_numbers
+
+- name: Configure firewalld services.
+  firewalld:
+    zone: "{{ item.0.zone }}"
+    service: "{{ item.1 }}"
+    state: "{{ item.0.state }}"
+    immediate: yes
+    permanent: yes
+  with_subelements:
+    - "{{ firewalld_services }}"
+    - service_names
