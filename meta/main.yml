@@ -1,6 +1,7 @@
-
 ---
 galaxy_info:
+  role_name: firewalld
+  namespace: probosmo
   author: probosmo
   description: Firewalld configuration via variables
   license: MIT
@@ -8,7 +9,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - 20.04
+        - focal
   galaxy_tags:
     - firewalld
     - firewall
