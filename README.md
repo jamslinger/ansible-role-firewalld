@@ -35,7 +35,7 @@ Example Playbook
   vars_files:
     - vars/main.yml
   roles:
-    - probosmo.firewalld
+    - jamslinger.firewalld
 ```
 
 With `vars/main.yaml`:
